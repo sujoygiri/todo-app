@@ -1,5 +1,7 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Container } from 'react-bootstrap';
+
+import './TaskList.css';
 
 const TaskList = () => {
 
@@ -28,16 +30,21 @@ const TaskList = () => {
 
     return (
         <>
-            <div>TaskList</div>
-            {tasks && tasks.map((task) => {
-                return (
-                    <div key={task.id}>
-                        <div>{task.title}</div>
-                        <div>{task.description}</div>
-                    </div>
-                )
-            })
-            }
+            <Container>
+                <div className="heading">
+                    <h3>Task List</h3>
+                </div>
+                {tasks && tasks.map((task) => {
+                    return (
+                        <div key={task.id}>
+                            <div className="task-name">
+                                <h5>{task.name}</h5>
+                            </div>
+                        </div>
+                    )
+                })
+                }
+            </Container>
         </>
     )
 }
