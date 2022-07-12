@@ -1,0 +1,7 @@
+.is-task-done{
+    display: flex;
+}
+
+.task-yes, .task-no {
+    margin: 0 10px 0 0;
+}

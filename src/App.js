@@ -4,7 +4,6 @@ import './App.css';
 import Home from './Pages/Home';
 import PageNotFound404 from './Pages/PageNotFound404';
 import NavbarMain from './Components/Navbar';
-import TaskList from './Pages/TaskList';
 
 function App() {
   return (
@@ -12,7 +11,6 @@ function App() {
       <NavbarMain />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path="/all-tasks" element={<TaskList />} />
         <Route path='*' element={<PageNotFound404 />} />
       </Routes>
     </>

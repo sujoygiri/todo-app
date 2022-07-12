@@ -1,0 +1,41 @@
+.heading{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0.5em;
+    text-align: center;
+
+}
+
+.task-name{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 0.5em 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+}
+
+.line-through {
+    text-decoration: line-through rgb(199, 21, 21);
+}
+
+.task-title-section{
+    display: flex;
+    justify-content: start;
+    width: 100%;
+}
+
+.task-name:hover{
+    background-color: #ccc;
+    transition: 0.7s;
+}
+
+.btn-sm{
+    width: 80px;
+}
+
+.task-create-btn:hover{
+    box-shadow: 0px 0px 10px rgb(83, 81, 81);
+    transition: 0.2s;
+}
