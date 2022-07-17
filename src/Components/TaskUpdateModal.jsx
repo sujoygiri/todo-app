@@ -24,7 +24,7 @@ const TaskUpdateModal = ({ show, handleClose, updated_task, setLoading }) => {
         let url = "https://sujoygiri123.pythonanywhere.com/api/task-update/";
         let updated_task_name = taskName;
         let updated_task_desc = taskDesc;
-        let updated_task_status = e.target.task_status.value;
+        let updated_task_status = e.target.task_status.value ? true : false;
         const response = await fetch(url,{
             method:"POST",
             headers: {
