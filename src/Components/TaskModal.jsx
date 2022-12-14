@@ -22,10 +22,9 @@ const TaskModal = ({ show, handleClose, setLoading }) => {
       },
       body: sending_data
     });
-    const data = await response.json();
+    await response.json();
     setLoading(true);
     handleClose();
-    console.log(data);
   }
 
   return (

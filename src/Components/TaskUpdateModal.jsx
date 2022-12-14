@@ -9,6 +9,7 @@ const TaskUpdateModal = ({ show, handleClose, updated_task, setLoading }) => {
 
     const [taskName, setTaskName] = useState(updated_task.name);
     const [taskDesc, setTaskDesc] = useState(updated_task.description);
+    const [taskStatus, setTaskStatus] = useState(updated_task.is_done);
 
     const updateTaskName = (e) => {
         setTaskName(e.target.value);
@@ -18,13 +19,17 @@ const TaskUpdateModal = ({ show, handleClose, updated_task, setLoading }) => {
         setTaskDesc(e.target.value);
     }
 
+    const updateTaskStatus = (e) => {
+        setTaskStatus(e.target.value);
+    }
+
 
     const updateTask = async (e) => {
         e.preventDefault();
         let url = "https://sujoygiri123.pythonanywhere.com/api/task-update/";
         let updated_task_name = taskName;
         let updated_task_desc = taskDesc;
-        let updated_task_status = e.target.task_status.value ? true : false;
+        let updated_task_status = taskStatus;
         const response = await fetch(url,{
             method:"POST",
             headers: {
@@ -37,15 +42,14 @@ const TaskUpdateModal = ({ show, handleClose, updated_task, setLoading }) => {
                 "is_done": updated_task_status 
             })
         });
-        const data = await response.json();
+        await response.json();
         handleClose();
         setLoading(true);
-        console.log(data);
     }
 
     return (
         <>
-            <Modal className="animate__animated animate__fadeInDownBig" show={show} onHide={handleClose} backdrop="static" keyboard={false} fade>
+            <Modal className="animate__animated animate__fadeInDownBig" show={show} onHide={handleClose} backdrop="static" keyboard={false} fade="true">
                 <Form onSubmit={updateTask} method="POST">
                     <Modal.Header closeButton>
                         <Modal.Title>Update Your Task</Modal.Title>
@@ -61,8 +65,8 @@ const TaskUpdateModal = ({ show, handleClose, updated_task, setLoading }) => {
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="task-done">
                             <Form.Label>Is Task Done?</Form.Label>
-                            <div className="is-task-done">
-                                <Form.Check className="task-yes" type="radio" name="task_status" label="Yes" value={true} />
+                            <div className="is-task-done" onChange={updateTaskStatus}>
+                                <Form.Check className="task-yes" type="radio" name="task_status" label="Yes" value={true}/>
                                 <Form.Check className="task-no" type="radio" name="task_status" label="No" value={false} />
                             </div>
                         </Form.Group>

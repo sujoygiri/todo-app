@@ -30,15 +30,13 @@ const Home = () => {
       }
     });
     const data = await response.json();
-    console.log(data);
     setTasks(data);
     setLoading(false);
   }
 
   const handelUpdate = (task) => {
     setShowUpdateModal(true);
-    setUpdateData(task);
-    
+    setUpdateData(task);    
   };
 
   const handelDelete = (task) => {
